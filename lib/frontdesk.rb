@@ -6,14 +6,12 @@ module Hotel
     attr_accessor :rooms, :reservations
 
     def initialize
-      @rooms = get_rooms
-      @reservations = get_reservations
+      @rooms = 
+      @reservations = []
+
     end
 
-    def access_rooms
-    end
-
-    def reserve_room
+    def add_reservation
     end
 
     def access_reservations
