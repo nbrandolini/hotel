@@ -7,8 +7,8 @@ module Hotel
 
     def initialize(guest, check_in, check_out, room)
       @room = room
-      @check_in = check_in_date(check_in)
-      @check_out = check_out_date(check_out)
+      @check_in = validate_date(check_in)
+      @check_out = validate_date(check_out)
       @guest = guest
       @total_nights = calculate_length
 
@@ -18,19 +18,11 @@ module Hotel
 
     private
 
-    def check_in_date(check_in)
-      if check_in.is_a? (Date)
-        @check_in = check_in
+    def validate_date(date)
+      if date.is_a? (Date)
+        return date
       else
         raise ArgumentError.new "Invalid check in date"
-      end
-    end
-
-    def check_out_date(check_out)
-      if check_in.is_a? (Date)
-        @check_out = check_out
-      else
-        raise ArgumentError.new "Invalid check out date"
       end
     end
 
@@ -43,6 +35,8 @@ module Hotel
       end
     end
 
+    def total_cost
+    end
     # def request_reservation
     # end
 
