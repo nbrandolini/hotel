@@ -19,5 +19,5 @@ module Hotel
     end
   end
 
-end # class
+  end # class
 end # module

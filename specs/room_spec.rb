@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-describe Hotel::Room do
+xdescribe Hotel::Room do
   describe "Can create a room instance" do
     it "can be created" do
       room = Hotel::Room.new(1)

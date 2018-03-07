@@ -15,6 +15,9 @@ module Hotel
 
     end #initialize
 
+    def include_date?(date)
+      return date >= check_in && date < check_out
+    end
 
     private
 
@@ -35,9 +38,10 @@ module Hotel
       end
     end
 
+
     def total_cost
     end
-    # def request_reservation
+
     # end
 
 
