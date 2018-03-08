@@ -15,8 +15,16 @@ module Hotel
 
     end #initialize
 
+    # def include_date?(date)
+    #   return date >= check_in && date < check_out
+    # end
+
     def include_date?(date)
-      return date >= check_in && date < check_out
+      date.between?(@check_in, @check_out - 1)
+    end
+
+    def total_cost
+      @total_nights * 200
     end
 
     private
@@ -37,13 +45,6 @@ module Hotel
         return length.to_i
       end
     end
-
-
-    def total_cost
-    end
-
-    # end
-
 
   end
 end

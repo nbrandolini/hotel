@@ -38,7 +38,24 @@ describe Hotel:: Reservation do
     end
   end
 
+  describe "total_cost" do
+    it "calculates the total_cost of one night" do
+      check_in = Date.new(2018, 03, 16)
+      check_out = Date.new(2018, 03, 17)
+      reservation = Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(3))
+      reservation.total_cost.must_equal 200
+    end
+
+    it "calculates the total cost of multiple nights" do
+      check_in = Date.new(2018, 03, 16)
+      check_out = Date.new(2018, 03, 19)
+      reservation = Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(3))
+      reservation.total_cost.must_equal 600
+    end
+  end
 end
+
+
 
 
 

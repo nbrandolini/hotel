@@ -12,10 +12,12 @@ module Hotel
     end
 
     # TODO arg raise Argument Error for no available rooms
+
     def make_reservation(guest, check_in, check_out)
-      room = assign_room(check_in, check_out)
+      # room = assign_room(check_in, check_out)
       @reservations << Reservation.new(guest, check_in, check_out, room)
     end
+
 
     def validate_date(date)
       if date.is_a? (Date)
@@ -59,8 +61,19 @@ module Hotel
     end
 
     # TODO
-    def assign_room(check_in, check_out)
-    end
+
+    # def assign_room(check_in, check_out, room)
+    #   available_rooms = get_available_rooms(check_in, check_out)
+    #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
+    #
+    #     available_rooms.each do |empty_room|
+    #       if empty_room.number == room
+    #         return empty_room
+    #       end
+    #     end
+    #
+    # end
+    
 
   end
 end
