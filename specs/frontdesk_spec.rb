@@ -14,6 +14,27 @@ describe "Hotel::FrontDesk" do
     end
   end
 
+  describe "make_reservation" do
+    it "creates a reservation" do
+      frontdesk = Hotel::FrontDesk.new
+      check_in = Date.new(2018, 03, 16)
+      check_out = Date.new(2018, 03, 19)
+      frontdesk.make_reservation(@guest, check_in, check_out)
+    end
+    it "raises a StandardError when they are no available rooms left" do
+      frontdesk = Hotel::FrontDesk.new
+      check_in = Date.new(2018, 03, 16)
+      check_out = Date.new(2018, 03, 19)
+
+      20.times do
+        frontdesk.make_reservation(@guest, check_in, check_out)
+      end
+      proc{frontdesk.make_reservation(@guest, check_in, check_out)}.must_raise StandardError
+    end
+  end
+
+
+
   describe "get_available_rooms" do
     it "gets a list of available rooms" do
       fd  = Hotel::FrontDesk.new

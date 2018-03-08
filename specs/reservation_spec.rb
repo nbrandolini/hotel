@@ -39,7 +39,7 @@ describe Hotel:: Reservation do
   end
 
   describe "total_cost" do
-    it "calculates the total_cost of one night" do
+    it "calculates the total cost of one night" do
       check_in = Date.new(2018, 03, 16)
       check_out = Date.new(2018, 03, 17)
       reservation = Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(3))

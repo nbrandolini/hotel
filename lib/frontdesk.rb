@@ -14,10 +14,14 @@ module Hotel
     # TODO arg raise Argument Error for no available rooms
 
     def make_reservation(guest, check_in, check_out)
-      # room = assign_room(check_in, check_out)
-      @reservations << Reservation.new(guest, check_in, check_out, room)
+      avail_rooms = get_available_rooms(check_in, check_out)
+      if avail_rooms.empty?
+        raise StandardError.new("No room is available for this date range")
+      else
+        reservation = Hotel::Reservation.new(guest,check_in, check_out, avail_rooms.sample)
+        @reservations << reservation
+      end
     end
-
 
     def validate_date(date)
       if date.is_a? (Date)
@@ -47,33 +51,32 @@ module Hotel
         end
       end
       return available_rooms
-    end
 
-
-    def get_reservation_by_date(date)
-      reservation_by_date = []
-      @reservations.each do |res|
-        if res.include_date?(date)
-          reservation_by_date << res
+      def get_reservation_by_date(date)
+        reservation_by_date = []
+        @reservations.each do |res|
+          if res.include_date?(date)
+            reservation_by_date << res
+          end
         end
+        return reservation_by_date
       end
-      return reservation_by_date
+
+      TODO
+
+      # def assign_room(check_in, check_out, room)
+      #   available_rooms = get_available_rooms(check_in, check_out)
+      #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
+      #
+      #     available_rooms.each do |empty_room|
+      #       if empty_room.number == room
+      #         return empty_room
+      #       end
+      #     end
+      #
+      # end
+
+
     end
-
-    # TODO
-
-    # def assign_room(check_in, check_out, room)
-    #   available_rooms = get_available_rooms(check_in, check_out)
-    #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
-    #
-    #     available_rooms.each do |empty_room|
-    #       if empty_room.number == room
-    #         return empty_room
-    #       end
-    #     end
-    #
-    # end
-    
-
   end
 end
