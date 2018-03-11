@@ -93,12 +93,23 @@ describe "Hotel::FrontDesk" do
       date_begin = Date.new(2018, 03, 16)
       date_end = Date.new(2018, 03, 19)
       fd.make_reservation(@guest, date_begin, date_end)
-      fd = Hotel::FrontDesk.new
       date_begin = Date.new(2018, 03, 14)
       date_end = Date.new(2018, 03, 17)
       fd.make_reservation(@guest, date_begin, date_end)
-      res = fd.get_reservation_by_date(2018, 03, 16)
+      res = fd.get_reservation_by_date(Date.new(2018, 03, 16))
       res.length.must_equal 2
+    end
+
+    it "returns an empty array when there are no overlaping reservation" do
+      fd = Hotel::FrontDesk.new
+      date_begin = Date.new(2018, 03, 16)
+      date_end = Date.new(2018, 03, 19)
+      fd.make_reservation(@guest, date_begin, date_end)
+      date_begin = Date.new(2018, 03, 14)
+      date_end = Date.new(2018, 03, 17)
+      fd.make_reservation(@guest, date_begin, date_end)
+      res = fd.get_reservation_by_date(Date.new(2018, 03, 19))
+      res.length.must_equal 0
     end
   end
 end

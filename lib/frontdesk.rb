@@ -9,7 +9,7 @@ module Hotel
     def initialize
       @rooms = create_rooms
       @reservations = []
-     end
+    end
 
 
     def make_reservation(guest, check_in, check_out)
@@ -20,16 +20,10 @@ module Hotel
         reservation = Hotel::Reservation.new(guest,check_in, check_out, avail_rooms.sample)
         @reservations << reservation
       end
+      return reservation
     end
 
 
-    def create_rooms
-      rooms = []
-      (1..20).each do |num|
-        rooms << Room.new(num)
-      end
-      return rooms
-    end
 
     def get_available_rooms(date_begin, date_end)
       available_rooms = @rooms.clone
@@ -42,48 +36,51 @@ module Hotel
         end
       end
       return available_rooms
+    end
 
-      def get_reservation_by_date(date)
-        reservations_by_date = []
-        @reservations.each do |res|
-          if res.include_date?(date)
-          end
-            reservations_by_date << res
+    def get_reservation_by_date(date)
+      reservations_by_date = []
+      @reservations.each do |res|
+        if res.include_date?(date)
+          reservations_by_date << res
         end
-        return reservations_by_date
       end
-
-      def include_date?(date)
-        date.between?(@check_in, @check_out - 1)
-      end
+      return reservations_by_date
+    end
 
     private
 
-      def validate_date(date)
-        if date.is_a? (Date)
-          return date
-        else
-          raise ArgumentError.new "Argument must be a date."
-        end
-
+    def validate_date(date)
+      if date.is_a? (Date)
+        return date
+      else
+        raise ArgumentError.new "Argument must be a date."
       end
 
-
-
-
-      # def assign_room(check_in, check_out, room)
-      #   available_rooms = get_available_rooms(check_in, check_out)
-      #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
-      #
-      #     available_rooms.each do |empty_room|
-      #       if empty_room.number == room
-      #         return empty_room
-      #       end
-      #     end
-      #
-      # end
-
-
     end
+
+    def create_rooms
+      rooms = []
+      (1..20).each do |num|
+        rooms << Room.new(num)
+      end
+      return rooms
+    end
+
+
+
+    # def assign_room(check_in, check_out, room)
+    #   available_rooms = get_available_rooms(check_in, check_out)
+    #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
+    #
+    #     available_rooms.each do |empty_room|
+    #       if empty_room.number == room
+    #         return empty_room
+    #       end
+    #     end
+    #
+    # end
+
+
   end
 end
