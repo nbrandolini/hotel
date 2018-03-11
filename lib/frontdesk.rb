@@ -9,9 +9,8 @@ module Hotel
     def initialize
       @rooms = create_rooms
       @reservations = []
-    end
+     end
 
-    # TODO arg raise Argument Error for no available rooms
 
     def make_reservation(guest, check_in, check_out)
       avail_rooms = get_available_rooms(check_in, check_out)
@@ -23,14 +22,6 @@ module Hotel
       end
     end
 
-    def validate_date(date)
-      if date.is_a? (Date)
-        return date
-      else
-        raise ArgumentError.new "Invalid check in date"
-      end
-
-    end
 
     def create_rooms
       rooms = []
@@ -53,16 +44,32 @@ module Hotel
       return available_rooms
 
       def get_reservation_by_date(date)
-        reservation_by_date = []
+        reservations_by_date = []
         @reservations.each do |res|
           if res.include_date?(date)
-            reservation_by_date << res
           end
+            reservations_by_date << res
         end
-        return reservation_by_date
+        return reservations_by_date
       end
 
-      TODO
+      def include_date?(date)
+        date.between?(@check_in, @check_out - 1)
+      end
+
+    private
+
+      def validate_date(date)
+        if date.is_a? (Date)
+          return date
+        else
+          raise ArgumentError.new "Argument must be a date."
+        end
+
+      end
+
+
+
 
       # def assign_room(check_in, check_out, room)
       #   available_rooms = get_available_rooms(check_in, check_out)
