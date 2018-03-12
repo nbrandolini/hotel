@@ -11,7 +11,6 @@ module Hotel
       @reservations = []
     end
 
-
     def make_reservation(guest, check_in, check_out)
       avail_rooms = get_available_rooms(check_in, check_out)
       if avail_rooms.empty?
@@ -22,8 +21,6 @@ module Hotel
       end
       return reservation
     end
-
-
 
     def get_available_rooms(date_begin, date_end)
       available_rooms = @rooms.clone
@@ -66,21 +63,6 @@ module Hotel
       end
       return rooms
     end
-
-
-
-    # def assign_room(check_in, check_out, room)
-    #   available_rooms = get_available_rooms(check_in, check_out)
-    #     raise StandardError.new "No more rooms available for that day", if available_rooms.empty?
-    #
-    #     available_rooms.each do |empty_room|
-    #       if empty_room.number == room
-    #         return empty_room
-    #       end
-    #     end
-    #
-    # end
-
 
   end
 end

@@ -11,13 +11,7 @@ module Hotel
       @check_out = validate_date(check_out)
       @guest = guest
       @total_nights = calculate_length
-
-
-    end #initialize
-
-    # def include_date?(date)
-    #   return date >= check_in && date < check_out
-    # end
+    end
 
     def include_date?(date)
       date.between?(@check_in, @check_out - 1)

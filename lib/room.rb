@@ -9,7 +9,7 @@ module Hotel
     @rate = 200
   end
 
-  private # Raise arument error if room number is not an integer or is already taken
+  private
 
   def check_room_number(number)
     if number.is_a?(Integer) == false
@@ -19,5 +19,5 @@ module Hotel
     end
   end
 
-  end # class
-end # module
+  end
+end 

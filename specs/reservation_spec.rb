@@ -54,13 +54,3 @@ describe Hotel:: Reservation do
     end
   end
 end
-
-
-
-
-
-
-
-# it "establishes the base data structures when instantiated" do
-#   reservation = Hotel::Reservation.new(@guest, check_in, check_out,Hotel::Room.new)
-# end
