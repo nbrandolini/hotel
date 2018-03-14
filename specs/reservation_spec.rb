@@ -12,6 +12,22 @@ describe Hotel:: Reservation do
       reservation.must_be_instance_of Hotel::Reservation
     end
 
+    it "raises an Argument Error for nil check_in" do
+      check_in = nil
+      check_out = Date.new(2018, 03, 20)
+
+      error = proc{Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(1))}.must_raise ArgumentError
+      error.message.must_equal "Invalid date"
+    end
+
+    it "raises an Argument Error for nil check_out" do
+      check_in = Date.new(2018, 03, 16)
+      check_out = nil
+
+      error = proc{Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(1))}.must_raise ArgumentError
+      error.message.must_equal "Invalid date"
+    end
+
     it "accurately calculates the length of a stay of 1 night" do
       check_in = Date.new(2018, 03, 16)
       check_out = Date.new(2018, 03, 19)

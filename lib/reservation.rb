@@ -27,8 +27,8 @@ module Hotel
       if date.is_a? (Date)
         return date
       else
-        raise ArgumentError.new "Invalid check in date"
-      end
+        raise ArgumentError.new "Invalid date"
+       end
     end
 
     def calculate_length

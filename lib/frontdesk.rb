@@ -47,15 +47,6 @@ module Hotel
 
     private
 
-    def validate_date(date)
-      if date.is_a? (Date)
-        return date
-      else
-        raise ArgumentError.new "Argument must be a date."
-      end
-
-    end
-
     def create_rooms
       rooms = []
       (1..20).each do |num|
