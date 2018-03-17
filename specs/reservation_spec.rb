@@ -18,6 +18,7 @@ describe Hotel:: Reservation do
 
       error = proc{Hotel::Reservation.new(@guest, check_in, check_out, Hotel::Room.new(1))}.must_raise ArgumentError
       error.message.must_equal "Invalid date"
+
     end
 
     it "raises an Argument Error for nil check_out" do

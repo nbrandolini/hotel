@@ -28,11 +28,11 @@ module Hotel
         return date
       else
         raise ArgumentError.new "Invalid date"
-       end
+      end
     end
 
     def calculate_length
-      if @check_in >= @check_out || @check_in < Date.today
+      if @check_in >= @check_out 
         raise ArgumentError.new "invalid dates"
       else
         length = @check_out - @check_in
