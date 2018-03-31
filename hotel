@@ -1,0 +1,30 @@
+
+1. What classes does each implementation include? Are the lists the same?
+
+
+
+2. Write down a sentence to describe each class.
+
+
+3. How do the classes relate to each other? It might be helpful to draw a diagram on a whiteboard or piece of paper.
+
+4. What data does each class store? How (if at all) does this differ between the two implementations?
+5. What methods does each class have? How (if at all) does this differ between the two implementations?
+
+6. Consider the Order#total_price method. In each implementation:
+  Is logic to compute the price delegated to "lower level" classes like ShoppingCart and CartEntry, or is it retained in Order?
+  Does total_price directly manipulate the instance variables of other classes?
+
+7. If we decide items are cheaper if bought in bulk, how would this change the code? Which implementation is easier to modify?
+
+8. Which implementation better adheres to the single responsibility principle?
+
+9. Bonus question once you've read Metz ch. 3: Which implementation is more loosely coupled?
+
+>>>>>Revisiting Hotel>>>>>>
+
+1. What is this class's responsibility?
+  You should be able to describe it in a single sentence.
+2. Is this class responsible for exactly one thing?
+3. Does this class take on any responsibility that should be delegated to "lower level" classes?
+4. Is there code in other classes that directly manipulates this class's instance variables?
